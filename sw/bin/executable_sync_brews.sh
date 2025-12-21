@@ -134,6 +134,7 @@ PACKAGES+=(
   mockery
   urlview
   tree-sitter
+  tree-sitter-cli
   cmake
   circleci
   graphviz
