@@ -106,6 +106,7 @@ fi
 source $HOME/.local/share/zinit/zinit.git/zinit.zsh
 
 zinit light marzocchi/zsh-notify
+zstyle ':notify:*' check-focus no
 zstyle ':notify:*' error-icon "$HOME/sw/assets/lose.png"
 zstyle ':notify:*' error-title "wow such #fail"
 zstyle ':notify:*' success-icon "$HOME/sw/assets/win.png"
@@ -144,6 +145,9 @@ APP_ATTN_PATTERNS=(
   'git_ship'
   'speedtest'
   'pnpm'
+  'npm'
+  'yarn'
+  'turbo'
 )
 
 function term-notify() {
