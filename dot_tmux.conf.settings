@@ -509,7 +509,7 @@ TMUX_FZF_MENU=\
 " Explain Prompt\nwin_split -h -a 'explain_prompt'\n"\
 " tmux Useful Bindings\nwin_split -h -a 'tmux_bindings'\n"\
 " Zsh Completions List\nwin_split -a 'zinit completions'\n"\
-" System Information (neofetch)\nwin_split -h -a 'neofetch'\n"
+" System Information (fastfetch)\nwin_split -h -a 'fastfetch'\n"
 
 # user defined overrides
 source -q ~/.tmux.conf_local

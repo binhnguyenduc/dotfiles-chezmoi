@@ -46,7 +46,6 @@ PACKAGES+=(
 	gopls
 	gotests
   gops
-  delve
   typescript
 	universal-ctags
 	thefuck
@@ -64,7 +63,7 @@ PACKAGES+=(
   go-jsonnet
 	jsonnet-bundler
 	tanka
-	sops
+	eops
 	terraform
   terragrunt
   tflint
@@ -109,7 +108,7 @@ PACKAGES+=(
 	vivid
 	hyperfine
 	sd
-	dog
+	doge
 	procs
 	broot
 	chafa
@@ -122,7 +121,7 @@ PACKAGES+=(
   pstree
   smug
   onefetch
-  neofetch
+  fastfetch
   speedtest-cli
 	gping
   tty-clock
@@ -136,12 +135,10 @@ PACKAGES+=(
   urlview
   tree-sitter
   cmake
-  hasura-cli
   circleci
   graphviz
   jqp
   openjdk
-  openjdk@17
   gradle
   socat
   gum
