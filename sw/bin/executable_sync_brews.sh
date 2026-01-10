@@ -150,7 +150,7 @@ PACKAGES+=(
   pnpm
   yarn
   pipx
-  opencode
+  anomalyco/tap/opencode
 )
 
 if [[ $OSTYPE == 'darwin'* ]]; then
