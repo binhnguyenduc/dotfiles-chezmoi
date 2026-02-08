@@ -72,6 +72,7 @@ PACKAGES+=(
 	jq
 	yq
 	gh
+  copilot-cli
 	kind
 	neovim
 	asdf
