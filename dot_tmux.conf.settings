@@ -355,8 +355,8 @@ set -g pane-border-format "#{pane_index} #{?pane_title, | #{pane_title},}"
 set-hook -g 'client-attached[0]' 'run "tmux setenv -u tmux_cpu_status_init"'
 set-hook -g 'client-detached[0]' 'run "tmux setenv -u tmux_cpu_status_init"'
 
-set-hook -g 'client-attached[1]' 'display-message "Welcome back ${USER}."'
-set-hook -g 'session-created[0]' 'display-message "Welcome ${USER}."'
+set-hook -g 'client-attached[1]' 'display-message "DNSE tmux: Welcome back ${USER}."'
+set-hook -g 'session-created[0]' 'display-message "DNSE tmux: Welcome ${USER}."'
 
 # Use run-shell to run uuidgen command and store result in uuid variable
 run-shell "tmux setenv -g TMUX_UUID $(uuidgen)"
