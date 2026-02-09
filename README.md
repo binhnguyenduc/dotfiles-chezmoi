@@ -1,28 +1,28 @@
-# CodeRabbit Dotfiles
+# DNSE Dotfiles
 
-![CodeRabbit Neovim](./sw/assets/vim.png)
+![DNSE Neovim](./sw/assets/vim.png)
 
 ## Introduction
 
-Welcome to CodeRabbit optimized development environment that is well integrated
+Welcome to DNSE optimized development environment that is well integrated
 with our stack.
 
 ## Setup
 
-We use [chezmoi](https://www.chezmoi.io) to manage CodeRabbit dotfiles in your
+We use [chezmoi](https://www.chezmoi.io) to manage DNSE dotfiles in your
 home directory.
 
 ### Automatic Setup
 
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/coderabbitai/dotfiles/master/sw/assets/executable_install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/binhnguyenduc/dotfiles-chezmoi/master/sw/assets/executable_install.sh)"
 ```
 
 ### Manual Setup
 
 ```
 cd $HOME
-chezmoi init git@github.com:coderabbitai/dotfiles.git
+chezmoi init git@github.com:binhnguyenduc/dotfiles-chezmoi.git
 # show diff of changes that will be made
 chezmoi diff
 # If you are happy with the changes, apply away!
@@ -44,7 +44,7 @@ Provide username and email address by creating `.gitconfig_local` e.g.
 ```
 [user]
   name = Harjot Gill
-  email = harjot@coderabbit.ai
+  email = your@email.com
 [github]
    user = <github user name>
    token = <personal access token>
@@ -58,12 +58,9 @@ for GitHub to use HTTP API. Also, it's useful to add this token to your
 
 ### GitHub org cloning script
 
-To clone CodeRabbit, run: `gh_clone_all.sh coderabbitai $HOME/work`. This step
-is performed automatically on installation.
-
 ### Git pull all repos script
 
-To update all repos in a directory, run: `pull_all.sh $HOME/work/coderabbitai`.
+To update all repos in a directory, run: `pull_all.sh $HOME/work`.
 This step is performed automatically on auto-updates.
 
 ## Preparing your terminal

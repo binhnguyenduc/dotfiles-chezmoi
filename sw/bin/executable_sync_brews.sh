@@ -388,7 +388,6 @@ revolver update 'Installing python packages...'
 #python stuff
 pip3 install --quiet --upgrade pip
 pip3 install --quiet --upgrade setuptools
-# fluxninja
 pip3 install --quiet --upgrade pre-commit
 # required for nvim mundo
 pip3 install --quiet pynvim
