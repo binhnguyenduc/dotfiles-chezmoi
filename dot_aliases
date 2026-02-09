@@ -1,3 +1,5 @@
+alias vim='nvim'
+
 eza_options='--links --git --group --changed --time-style long-iso --icons'
 # replace ls with eza
 alias ls='eza $(printf $eza_options)'
