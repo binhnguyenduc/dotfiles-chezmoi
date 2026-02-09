@@ -1,9 +1,7 @@
 ---@type LazySpec
 return {
   "goolord/alpha-nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  cmd = "Alpha",
-  opts = function()
+  opts = function(_, opts)
     local dashboard = require("alpha.themes.dashboard")
 
     -- Custom header
@@ -33,7 +31,7 @@ return {
     dashboard.section.header.opts.hl = "DashboardHeader"
     dashboard.section.buttons.opts.hl = "DashboardCenter"
 
-    dashboard.opts.layout[1].val = 4
-    return dashboard.opts
+    dashboard.config.layout[1].val = 4
+    return dashboard
   end,
 }
