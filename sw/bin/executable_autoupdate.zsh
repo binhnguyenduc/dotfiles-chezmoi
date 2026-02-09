@@ -124,9 +124,6 @@ if [ ${last_system} -gt ${system_seconds} ] || [ $force_update -eq 1 ]; then
 	# update tldr
 	tldr --update
   
-  revolver update "Syncing styles in $HOME/notes"
-  pushd $HOME/notes && vale sync && popd
-
   revolver_stop
 
   if [[ $TERM == *"tmux"* || $TERM == *"screen"* || -n $TMUX ]]; then

@@ -150,7 +150,6 @@ PACKAGES+=(
   gradle
   socat
   gum
-  vale
   swiftlint
   glab
   poetry

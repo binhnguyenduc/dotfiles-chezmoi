@@ -41,7 +41,6 @@ return {
       local tmux = require("tmux-awesome-manager")
       tmux.setup({
         per_project_commands = {
-          aperture = { { cmd = "make generate-config-markdown", name = "Make" } },
         },
         session_name = "Neovim Terminals",
         use_icon = true,
