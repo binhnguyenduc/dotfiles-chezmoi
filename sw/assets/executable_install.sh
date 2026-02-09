@@ -60,7 +60,7 @@ fi
 
 echo "Setting up .gitconfig_local"
 # ask the user to input email address
-email=$(gum input --placeholder "Please enter your CodeRabbit email address")
+email=$(gum input --placeholder "Please enter your DNSE email address")
 
 # ask the user to input their name
 name=$(gum input --placeholder "Please enter your name")
@@ -74,7 +74,7 @@ echo "[user]" >"$HOME"/.gitconfig_local
 echo "  name = $name" >>"$HOME"/.gitconfig_local
 echo "  email = $email" >>"$HOME"/.gitconfig_local
 
-chezmoi init git@github.com:coderabbitai/dotfiles.git
+chezmoi init git@github.com:binhnguyenduc/dotfiles-chezmoi.git
 chezmoi apply -v
 
 # run autoupdate script
