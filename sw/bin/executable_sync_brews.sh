@@ -286,6 +286,7 @@ if [[ $OSTYPE == 'darwin'* ]]; then
     font-figtree
 		iterm2
     ghostty
+    claude-code
 		adobe-acrobat-reader
 		docker
     orbstack
