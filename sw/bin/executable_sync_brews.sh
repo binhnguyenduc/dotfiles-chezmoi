@@ -16,7 +16,6 @@ brew tap claui/whence
 brew tap bufbuild/buf
 brew tap tilt-dev/tap
 brew tap noahgorstein/tap
-brew tap fluxninja/aperture
 brew tap anomalyco/tap
 
 revolver stop
@@ -131,6 +130,13 @@ PACKAGES+=(
   k9s
   kustomize
   kubebuilder
+  kubecolor
+  kubecm
+  kubefwd
+  kubetail
+  stern
+  cilium-cli
+  krew
   buf
   grpcurl
   mockery
@@ -145,8 +151,9 @@ PACKAGES+=(
   gradle
   socat
   gum
-  aperturectl
   vale
+  swiftlint
+  glab
   poetry
   pnpm
   yarn
