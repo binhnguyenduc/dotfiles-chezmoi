@@ -63,8 +63,7 @@ PACKAGES+=(
   go-jsonnet
 	jsonnet-bundler
 	tanka
-	eops
-	terraform
+	opentofu
   terragrunt
   tflint
 	kubernetes-cli
@@ -123,7 +122,7 @@ PACKAGES+=(
   smug
   onefetch
   fastfetch
-  speedtest-cli
+  speedtest
 	gping
   tty-clock
   lazydocker
