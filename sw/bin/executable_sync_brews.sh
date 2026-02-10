@@ -17,6 +17,7 @@ brew tap bufbuild/buf
 brew tap tilt-dev/tap
 brew tap noahgorstein/tap
 brew tap anomalyco/tap
+brew tap teamookla/speedtest
 
 revolver stop
 
@@ -122,7 +123,7 @@ PACKAGES+=(
   smug
   onefetch
   fastfetch
-  speedtest
+  teamookla/speedtest/speedtest
 	gping
   tty-clock
   lazydocker
