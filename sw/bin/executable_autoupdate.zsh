@@ -119,6 +119,11 @@ if [ ${last_system} -gt ${system_seconds} ] || [ $force_update -eq 1 ]; then
 	pip3 install --quiet --upgrade pip setuptools wheel && pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install --quiet --upgrade
 	update_error pip $?
 
+  if command -v flatpak &> /dev/null; then
+    revolver update "Updating Flatpak apps..."
+    flatpak update -y --noninteractive
+    update_error flatpak $?
+  fi
 
   revolver update "Updating tldr cache..."
 	# update tldr

@@ -181,6 +181,7 @@ else
 		wmctrl
 		libnotify
     gcc
+    google-cloud-sdk
 	)
   revolver update 'Installing fonts...'
   # declare a map of font urls to font file names (e.g. "FiraCode" to "Fira Code Regular")
@@ -333,6 +334,65 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   # set default terminal to iterm2
   duti -s com.googlecode.iterm2 com.apple.terminal.shell-script shell
   duti -s com.googlecode.iterm2 term
+else
+  # ── Linux GUI apps ──────────────────────────────────────────────────
+
+  # Flatpak bootstrap
+  if ! command -v flatpak &> /dev/null; then
+    revolver update 'Installing flatpak...'
+    if command -v apt-get &> /dev/null; then
+      sudo apt-get install -y flatpak
+    elif command -v dnf &> /dev/null; then
+      sudo dnf install -y flatpak
+    elif command -v pacman &> /dev/null; then
+      sudo pacman -S --noconfirm flatpak
+    fi
+  fi
+  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+  # Flatpak GUI apps
+  FLATPAKS=(
+    com.google.Chrome
+    com.slack.Slack
+    com.discordapp.Discord
+    us.zoom.Zoom
+    com.visualstudio.code
+  )
+
+  installed_flatpaks=($(flatpak list --app --columns=application 2>/dev/null))
+  for installed_flatpak in $installed_flatpaks; do
+    FLATPAKS=("${(@)FLATPAKS:#$installed_flatpak}")
+  done
+
+  if [[ ${#FLATPAKS[@]} -gt 0 ]]; then
+    revolver --style 'dots2' start 'Installing Flatpak apps...'
+    num_flatpaks=${#FLATPAKS[@]}
+    i=0
+    for fpak in "${FLATPAKS[@]}"; do
+      ((i++))
+      revolver update "Installing Flatpak $fpak ($i of $num_flatpaks)..."
+      flatpak install -y --noninteractive flathub "$fpak"
+    done
+  fi
+
+  # Ghostty (via mkasberg/ghostty-ubuntu install script)
+  if ! command -v ghostty &> /dev/null; then
+    revolver update 'Installing Ghostty...'
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"
+  fi
+
+  # Docker Engine (via get.docker.com)
+  if ! command -v docker &> /dev/null; then
+    revolver update 'Installing Docker Engine...'
+    curl -fsSL https://get.docker.com | sudo sh
+    sudo usermod -aG docker "$USER"
+  fi
+
+  # Twingate (via official install script)
+  if ! command -v twingate &> /dev/null; then
+    revolver update 'Installing Twingate...'
+    curl -fsSL https://binaries.twingate.com/client/linux/install.sh | sudo bash
+  fi
 fi
 
 revolver update 'Setting up fzf...'
