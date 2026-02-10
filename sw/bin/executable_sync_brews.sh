@@ -382,6 +382,9 @@ npm i -q -g bash-language-server
 npm i -q -g dockerfile-language-server-nodejs
 npm i -q -g graphql-language-service-cli
 npm i -q -g husky
+if [[ $OSTYPE == 'linux'* ]]; then
+  npm i -q -g @anthropic-ai/claude-code
+fi
 
 revolver update 'Installing python packages...'
 #python stuff
