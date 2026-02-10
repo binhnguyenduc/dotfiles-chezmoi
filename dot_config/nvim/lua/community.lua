@@ -25,7 +25,6 @@ return {
   { import = "astrocommunity.motion.flash-nvim" },
 
   -- Colorscheme
-  { import = "astrocommunity.colorscheme.gruvbox-material" },
   { import = "astrocommunity.colorscheme.catppuccin" },
 
   -- Editing support
