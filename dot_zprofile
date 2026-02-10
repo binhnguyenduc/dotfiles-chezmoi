@@ -9,6 +9,8 @@ else
     test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     # Add brew binutils to PATH (keg-only, needed for native builds like LuaSnip, telescope-fzf-native)
     export PATH="$(brew --prefix)/opt/binutils/bin:$PATH"
+    # Tell brew's ld where to find libgcc (needed for nvim-treesitter parser builds)
+    export LIBRARY_PATH="$(brew --prefix)/lib:$LIBRARY_PATH"
   fi
 fi
 
