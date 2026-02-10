@@ -1,5 +1,17 @@
 ---@type LazySpec
 return {
+  -- Override AstroCommunity SQL pack: sqls is deprecated, use sqlls instead
+  { "nanotee/sqls.nvim", enabled = false },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    optional = true,
+    opts = function(_, opts)
+      opts.ensure_installed = vim.tbl_filter(
+        function(v) return v ~= "sqls" end,
+        opts.ensure_installed or {}
+      )
+    end,
+  },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = {
