@@ -19,7 +19,7 @@ return {
         -- LSP servers
         "lua-language-server",
         "gopls",
-        "pyright",
+        "basedpyright",
         "typescript-language-server",
         "json-lsp",
         "yaml-language-server",
