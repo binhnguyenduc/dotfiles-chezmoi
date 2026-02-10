@@ -32,7 +32,7 @@ return {
     },
     opts = {
       provider = "claude",
-      auto_suggestions_provider = "copilot",
+      auto_suggestions_provider = "claude",
       claude = {
         endpoint = "https://api.anthropic.com",
         model = "claude-sonnet-4-20250514",
