@@ -7,10 +7,10 @@ else
     test -f /usr/local/bin/brew && eval "$(/usr/local/bin/brew shellenv)"
   else
     test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    # Add brew binutils to PATH (keg-only, needed for native builds like LuaSnip, telescope-fzf-native)
+    # Add brew binutils to PATH (keg-only, needed for ar/ranlib in native plugin builds)
     export PATH="$(brew --prefix)/opt/binutils/bin:$PATH"
-    # Tell brew's ld where to find libgcc (needed for nvim-treesitter parser builds)
-    export LIBRARY_PATH="$(brew --prefix)/lib:$LIBRARY_PATH"
+    # Use brew gcc as CC so it passes correct crt/libgcc paths to ld (brew clang doesn't)
+    export CC=gcc-15
   fi
 fi
 
