@@ -7,6 +7,8 @@ else
     test -f /usr/local/bin/brew && eval "$(/usr/local/bin/brew shellenv)"
   else
     test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    # Add brew binutils to PATH (keg-only, needed for native builds like LuaSnip, telescope-fzf-native)
+    export PATH="$(brew --prefix)/opt/binutils/bin:$PATH"
   fi
 fi
 
