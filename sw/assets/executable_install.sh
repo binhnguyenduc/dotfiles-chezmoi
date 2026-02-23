@@ -6,8 +6,11 @@ function brew_shellenv() {
 		eval "$("$HOME"/homebrew/bin/brew shellenv)"
 	else
 		if [[ $OSTYPE == 'darwin'* ]]; then
-			test -d /opt/homebrew && eval "$(/opt/homebrew/bin/brew shellenv)"
-			test -f /usr/local/bin/brew && eval "$(/usr/local/bin/brew shellenv)"
+			if [[ "$(uname -m)" == "arm64" ]]; then
+				test -d /opt/homebrew && eval "$(/opt/homebrew/bin/brew shellenv)"
+			else
+				test -f /usr/local/bin/brew && eval "$(/usr/local/bin/brew shellenv)"
+			fi
 		else
 			test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 		fi
