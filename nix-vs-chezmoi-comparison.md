@@ -587,7 +587,7 @@
 | rustfmt | - | yes |
 | vint | - | yes |
 | swiftlint | yes | yes |
-| vale | - | yes |
+| vale | - | - |
 | autopep8 | - | yes |
 | golangci-lint | yes | yes |
 
@@ -713,10 +713,10 @@
 10. **zsh-autosuggestions** — fish-like command suggestions
 11. **zsh-you-should-use** — alias reminder system
 12. **direnv** — per-directory environment switching
-13. **Auto-update system** — weekly updates for brew, zinit, nvim, npm, pip, tldr, vale
+13. **Auto-update system** — weekly updates for brew, zinit, nvim, npm, pip, tldr
 14. **iTerm2 deep integration** — auto-profile install, wallpaper, fireworks animation
 15. **Fun features** — 2100+ insults/excuses/compliments, cowsay, fortune, figlet, ASCII welcome art
-16. **10+ linters** out of the box (shellcheck, eslint, pylint, vale, yamllint, etc.)
+16. **10+ linters** out of the box (shellcheck, eslint, pylint, yamllint, etc.)
 17. **Infrastructure tools** — terraform, terragrunt, tflint, tilt, circleci
 18. **34 GUI casks** (slack, discord, figma, notion, orbstack, ghostty, chatgpt, etc.)
 19. **9 Nerd Font families** (vs 1)
