@@ -1,5 +1,14 @@
 #!/usr/bin/env zsh
 
+# Set up correct brew prefix based on architecture
+if [[ "$(uname -m)" == "arm64" ]]; then
+	test -d /opt/homebrew && eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -d "$HOME/homebrew" ]; then
+	eval "$("$HOME"/homebrew/bin/brew shellenv)"
+else
+	test -f /usr/local/bin/brew && eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 brew tap molovo/revolver
 brew install --quiet revolver
 
