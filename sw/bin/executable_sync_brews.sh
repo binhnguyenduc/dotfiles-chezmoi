@@ -314,6 +314,7 @@ if [[ $OSTYPE == 'darwin'* ]]; then
     twingate
     chatgpt
     visual-studio-code
+    obsidian
 		swiftdefaultappsprefpane # for setting several macOS properties such as default app for opening plaintext files
     # copyq removed as it likely has memory leak on Apple Silicon
 	)
