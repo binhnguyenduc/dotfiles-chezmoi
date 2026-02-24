@@ -26,6 +26,7 @@ brew tap bufbuild/buf
 brew tap tilt-dev/tap
 brew tap noahgorstein/tap
 brew tap anomalyco/tap
+brew tap schpet/tap
 brew tap teamookla/speedtest
 
 revolver stop
@@ -167,6 +168,7 @@ PACKAGES+=(
   yarn
   pipx
   anomalyco/tap/opencode
+  schpet/tap/linear
 )
 
 if [[ $OSTYPE == 'darwin'* ]]; then
