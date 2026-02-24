@@ -164,6 +164,7 @@ PACKAGES+=(
   swiftlint
   glab
   poetry
+  uv
   pnpm
   yarn
   pipx
