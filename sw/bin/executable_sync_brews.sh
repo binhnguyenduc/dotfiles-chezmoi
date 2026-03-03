@@ -66,7 +66,7 @@ PACKAGES+=(
   node
 	python
   autopep8
-	rust
+	rustup
 	tilt
   ctlptl
 	bottom
