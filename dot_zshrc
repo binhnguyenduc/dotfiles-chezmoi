@@ -309,8 +309,12 @@ function configure_yazpt {
   YAZPT_EXECTIME_MIN_SECONDS=1
 }
 
+# NOTE: do NOT call yazpt_precmd here. The theme self-registers the precmd hook
+# (add-zsh-hook precmd yazpt_precmd) on load, and wait'!0' resets the prompt after
+# the task completes. Rendering mid-load re-enters @zinit-scheduler, which re-runs
+# this still-pending load task -> infinite recursion (FUNCNEST flood on fresh shells).
 zinit ice wait'!0' atload'source "$yazpt_default_preset_file"; \
-  configure_yazpt;yazpt_precmd' nocd lucid
+  configure_yazpt' nocd lucid
 zinit light jakshin/yazpt
 
 # install git-extras via zinit instead of brew
