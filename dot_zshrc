@@ -69,7 +69,21 @@ function set_terminal {
 }
 
 
-if [[ -z "$START_TMUX" ]]; then
+# Skip auto-launching tmux when already inside tmux ($TMUX) or inside an
+# Orca-managed terminal. Orca handles its own terminal session/persistence;
+# nesting tmux there drops the pane into an uninteractive session picker on
+# startup. Orca terminals are detected via several markers because the env
+# Orca injects varies by spawn timing: TERM_PROGRAM=Orca is present at PTY
+# creation, while COLLAB_PTY_SESSION_ID/TERMINAL appear only in long-lived
+# shells; __CFBundleIdentifier is inherited from the launching Orca app.
+if [[ "$TERM_PROGRAM" == "Orca" \
+   || -n "$COLLAB_PTY_SESSION_ID" \
+   || "$TERMINAL" == "Orca" \
+   || "$__CFBundleIdentifier" == "com.collaborator.desktop" ]]; then
+  export START_TMUX=false
+fi
+
+if [[ -z "$START_TMUX" && -z "$TMUX" ]]; then
   export START_TMUX=true
 fi
 
