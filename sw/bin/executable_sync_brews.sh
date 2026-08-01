@@ -459,6 +459,7 @@ npm i -q -g dockerfile-language-server-nodejs
 npm i -q -g graphql-language-service-cli
 npm i -q -g husky
 npm install -g @playwright/cli@latest
+npm install -g command-code@latest
 if [[ $OSTYPE == 'linux'* ]]; then
   npm i -q -g @anthropic-ai/claude-code
 fi
