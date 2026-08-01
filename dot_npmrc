@@ -1,0 +1,4 @@
+; Global installs go to ~/.npm-global, which dot_zprofile puts on PATH.
+; Without this, npm defaults its prefix to the active node install
+; (~/.hermes/node), whose bin dir is not on PATH.
+prefix=${HOME}/.npm-global
