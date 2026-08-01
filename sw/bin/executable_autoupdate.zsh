@@ -115,12 +115,16 @@ if [ ${last_system} -gt ${system_seconds} ] || [ $force_update -eq 1 ]; then
 	# A full MasonToolsUpdate takes >10min, too slow for a shell-startup hook.
 
   revolver update "Updating npm packages..."
-	npm update && npm upgrade && npm audit fix --force && npm prune --production --force
+	# `audit fix --force` is omitted deliberately: it installs breaking major
+	# versions, and the remaining advisories are unfixable transitive deps.
+	# `prune --production` is omitted too -- it deletes devDependencies.
+	npm update
 	update_error npm $?
 
   revolver update "Updating pip packages..."
-	# upgrade pip and pip packages
-	pip3 install --quiet --upgrade pip setuptools wheel && pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install --quiet --upgrade
+	# upgrade pip packages; pip itself is excluded because Homebrew owns it and
+	# ships no RECORD file, so pip cannot uninstall its own copy to upgrade
+	pip3 install --quiet --upgrade setuptools wheel && pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install --quiet --upgrade
 	update_error pip $?
 
   if command -v flatpak &> /dev/null; then
