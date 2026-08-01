@@ -123,8 +123,11 @@ if [ ${last_system} -gt ${system_seconds} ] || [ $force_update -eq 1 ]; then
 
   revolver update "Updating pip packages..."
 	# upgrade pip packages; pip itself is excluded because Homebrew owns it and
-	# ships no RECORD file, so pip cannot uninstall its own copy to upgrade
-	pip3 install --quiet --upgrade setuptools wheel && pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install --quiet --upgrade
+	# ships no RECORD file, so pip cannot uninstall its own copy to upgrade.
+	# xargs passes every package in one invocation on purpose: upgrading them
+	# one at a time makes pip walk through inconsistent intermediate states and
+	# emit spurious dependency-conflict errors, and is far slower.
+	pip3 install --quiet --upgrade setuptools wheel && pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip3 install --quiet --upgrade
 	update_error pip $?
 
   if command -v flatpak &> /dev/null; then
