@@ -33,10 +33,10 @@ return {
         "taplo",               -- TOML
         "marksman",            -- Markdown
         "prisma-language-server",
-        "buf-language-server", -- Protobuf
+        "protols",             -- Protobuf
         "ltex-ls",             -- Grammar/spell
         "jdtls",               -- Java
-        "vimls",               -- VimL
+        "vim-language-server", -- VimL
 
         -- Formatters
         "stylua",
