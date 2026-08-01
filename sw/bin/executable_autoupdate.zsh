@@ -106,9 +106,13 @@ if [ ${last_system} -gt ${system_seconds} ] || [ $force_update -eq 1 ]; then
 	source $HOME/.local/share/zinit/zinit.git/zinit.zsh && zinit self-update && zinit update --quiet --parallel 8 && zinit cclear
 	update_error zinit $?
 
-  revolver update "Updating nvim... (Press Spaces if this is taking too long)"
-	nvim +PlugUpgrade +PlugClean! +PlugUpdate +PlugInstall +CocUpdateSync +TSUpdateSync +qall
+  revolver update "Updating nvim plugins..."
+	# --headless keeps a plugin error from parking an interactive nvim mid-update
+	nvim --headless "+Lazy! sync" +qa
 	update_error nvim $?
+	# Mason tools are deliberately not updated here: the nvim config sets
+	# auto_update = false, and run_on_start already installs anything missing.
+	# A full MasonToolsUpdate takes >10min, too slow for a shell-startup hook.
 
   revolver update "Updating npm packages..."
 	npm update && npm upgrade && npm audit fix --force && npm prune --production --force
