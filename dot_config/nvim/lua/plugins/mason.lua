@@ -3,7 +3,8 @@ return {
   -- Override AstroCommunity SQL pack: sqls is deprecated, use sqlls instead
   { "nanotee/sqls.nvim", enabled = false },
   {
-    "williamboman/mason-lspconfig.nvim",
+    -- AstroNvim v6 moved mason-lspconfig to the mason-org fork (v2 API)
+    "mason-org/mason-lspconfig.nvim",
     optional = true,
     opts = function(_, opts)
       opts.ensure_installed = vim.tbl_filter(

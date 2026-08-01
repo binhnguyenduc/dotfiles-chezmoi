@@ -27,6 +27,6 @@ return {
   -- Colorscheme
   { import = "astrocommunity.colorscheme.catppuccin" },
 
-  -- Editing support
-  { import = "astrocommunity.editing-support.copilotchat-nvim" },
+  -- AI
+  { import = "astrocommunity.ai.copilotchat-nvim" },
 }
