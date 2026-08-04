@@ -3,6 +3,16 @@ if [[ -z "$ZPROFILE_SOURCED" ]]; then
   source ~/.zprofile
 fi
 
+# `brew shellenv` exports FPATH, which bakes in zsh's version-pinned Cellar
+# function dir. A long-lived process (tmux server, launchd) keeps that value
+# across a zsh upgrade, so the path is gone by the time new shells inherit it
+# and autoload of is-at-least/colors/add-zsh-hook/compinit fails. Drop dead
+# entries, then guarantee one live function dir via the unversioned symlink dir.
+fpath=( ${^fpath}(N-/) )
+if [[ -z ${fpath[(r)*/zsh/functions]} ]]; then
+  fpath+=( ${HOMEBREW_PREFIX:-/opt/homebrew}/share/zsh/functions(N-/) /usr/share/zsh/$ZSH_VERSION/functions(N-/) )
+fi
+
 export LS_COLORS="$(vivid generate gruvbox-dark)"
 
 export BAT_THEME="gruvbox-dark"
