@@ -32,6 +32,9 @@ return {
     dashboard.section.buttons.opts.hl = "DashboardCenter"
 
     dashboard.config.layout[1].val = 4
-    return dashboard
+
+    -- alpha.setup() validates opts.layout, so hand it the config table
+    -- (the theme module itself has no `layout` field).
+    return dashboard.config
   end,
 }
