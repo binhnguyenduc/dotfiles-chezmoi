@@ -416,8 +416,9 @@ revolver update 'Setting up fzf...'
 yes | $(brew --prefix)/opt/fzf/install
 
 revolver update 'Updating tldr...'
-# update tldr
-tldr --update
+# update tldr; bare 'en' locale -- tldr-pages ships tldr-pages.en.zip, and
+# en_US.UTF-8 makes tealdeer request a tldr-pages.en_US.zip that 404s.
+LANG=en tldr --update
 
 revolver update 'Updating navi cheats...'
 old_pwd=$(pwd)

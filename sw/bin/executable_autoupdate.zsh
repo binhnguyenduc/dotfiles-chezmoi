@@ -122,12 +122,15 @@ if [ ${last_system} -gt ${system_seconds} ] || [ $force_update -eq 1 ]; then
 	update_error npm $?
 
   revolver update "Updating pip packages..."
-	# upgrade pip packages; pip itself is excluded because Homebrew owns it and
-	# ships no RECORD file, so pip cannot uninstall its own copy to upgrade.
+	# upgrade pip packages; pip and wheel are excluded because Homebrew owns them
+	# and ships no RECORD file, so pip cannot uninstall its own copies to upgrade.
+	# wheel must be filtered out of the freeze list too: xargs upgrades the whole
+	# list in one invocation, so a single unupgradable package aborts every other
+	# upgrade in the batch.
 	# xargs passes every package in one invocation on purpose: upgrading them
 	# one at a time makes pip walk through inconsistent intermediate states and
 	# emit spurious dependency-conflict errors, and is far slower.
-	pip3 install --quiet --upgrade setuptools wheel && pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip3 install --quiet --upgrade
+	pip3 install --quiet --upgrade setuptools && pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | grep -vxE 'wheel' | xargs pip3 install --quiet --upgrade
 	update_error pip $?
 
   if command -v flatpak &> /dev/null; then
@@ -137,8 +140,10 @@ if [ ${last_system} -gt ${system_seconds} ] || [ $force_update -eq 1 ]; then
   fi
 
   revolver update "Updating tldr cache..."
-	# update tldr
-	tldr --update
+	# update tldr; LANG is forced to bare 'en' because tealdeer derives the
+	# archive name from the locale and tldr-pages publishes tldr-pages.en.zip,
+	# not the tldr-pages.en_US.zip that en_US.UTF-8 would ask for (404).
+	LANG=en tldr --update
   
   revolver_stop
 
